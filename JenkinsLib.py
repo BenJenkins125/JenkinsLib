@@ -1,7 +1,5 @@
 import JenkinsLib as JL
 
-JenkinsLib_functions = dir(JL)
-
 def lin_search(aim, list):
     n = 0
     value_found = False
@@ -11,14 +9,14 @@ def lin_search(aim, list):
             n=n+1
         else:
             n = n+1
-            value_found = False
-    if value_found == True:
-        print("value found in list")
     if value_found != True:
         print ("value not found in list")
+    if value_found == True:
+        print("value found in list")
+        value_found = False
 
 def search_JenkinsLib_functions(aim):
-    TL.lin_search(aim,JenkinsLib_functions)
+    JL.lin_search(aim,JenkinsLib_functions)
 
 def bubble_sort_num(list):
     A = 0
@@ -43,20 +41,32 @@ def bubble_sort_num(list):
                 else:
                     A = A+1
                     B = B+1
+    return list
                     
 def Binary_Search_Num(aim,list):
     min = 0
     max = len(list)
-    found = False
-    while found == False:
+    not_Found = False
+    guesses = 1
+    while not_Found != True:
         mid = int((min+max)/2)
         if aim == mid:
-            found = True
-            print ("found")
+            print ("value found in list after "+str(guesses)+" guesses")
         if aim < mid:
             max = mid
+            guesses=guesses+1
         if aim > mid:
             min = mid
+            guesses=guesses+1
+        if mid == max or mid == min:
+            print("Value not found in list")
+            not_Found = True
+
+
+def Functions():
+    return JenkinsLib_functions #These must go at the end of JL
+    
+JenkinsLib_functions = dir(JL)
     
 
 
